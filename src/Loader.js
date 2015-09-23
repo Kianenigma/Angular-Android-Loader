@@ -12,41 +12,38 @@ Loader.directive("loader" , function () {
         "</div>" ,
 
         link : function (scope , elem , attr) {
-            var _body = angular.element("body") ;
+            //var _body = angular.element("body") ;
 
-            var customStyle = {
-                backgroundColor : attr.bg
-            } ;
+            //var customStyle = {
+            //    backgroundColor : attr.bg
+            //} ;
+            //
+            //elem.css(customStyle) ;
+            //elem.find(".loaderMessage").css({
+            //    backgroundColor: attr.bg
+            //}) ;
 
-            elem.css(customStyle) ;
-            elem.find(".loaderMessage").css({
-                backgroundColor: attr.bg
-            }) ;
-
-
-
-            //console.log(elem , scope , attr ) ;
+            console.log(elem , scope , attr ) ;
         }
     }
 }) ;
 
 Loader.factory("Loader" , function ( $rootScope , $timeout ) {
     var _timeOut  ;
-    var start = function (message, timeout) {
+    var start = function (timeout , message ) {
 
         $timeout.cancel(_timeOut) ;
 
         $rootScope.loaderMessage = message ;
         $rootScope.loaderDisplay = true ;
-        $rootScope.loaderMessageDisplay = true ;
+        if ( message ) $rootScope.loaderMessageDisplay = true ;
 
         if ( timeout ) {
-            _timeOut = $timeout(function () {
-                $rootScope.loaderDisplay = false ;
-                $rootScope.loaderMessageDisplay = false ;
-            } ,  timeout ) ;
+            //_timeOut = $timeouttimeout(function () {
+            //    $rootScope.loaderDisplay = false ;
+            //    $rootScope.loaderMessageDisplay = false ;
+            //} ,  timeout ) ;
         }
-
     } ;
 
     var dismiss = function () {
@@ -58,10 +55,34 @@ Loader.factory("Loader" , function ( $rootScope , $timeout ) {
 
     } ;
 
+    var message = function (message) {
+        if ( $rootScope.loaderDisplay ) {
+            if ( $rootScope.loaderMessageDisplay ) {
+
+            }
+            else {
+                $rootScope.loaderMessage = message ;
+                $rootScope.loaderMessageDisplay = true ;
+            }
+        }
+        else {
+            console.warn("Loader Module : Loader Not Displayed . No Message Will Be Displayed")
+        }
+    } ;
+
+    var setTheme = function (name) {
+
+    } ;
+
+    var setStyle = function ( obj ) {
+
+    } ;
+
     return {
         start : start ,
         dismiss : dismiss ,
-        chain : chain
+        chain : chain ,
+        message : message ,
     }
 
 }) ;
