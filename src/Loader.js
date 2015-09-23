@@ -3,8 +3,16 @@ Loader.directive("loader" , function () {
     return {
         restrict : "E" ,
         replace : true ,
-        template : "<div ng-class='{loaderDisplay : loaderDisplay}' class='loaderWrapper'>" +
-        "<div ng-class='{loaderMessageDisplay : loaderMessageDisplay}' class='loaderMessage'> {{ loaderMessage }} </div>" +
+        template : "<div " +
+        "ng-class='{loaderDisplay : loaderDisplay}' class='loaderWrapper'>" +
+        "<div " +
+
+        "ng-class='{" +
+        "loaderMessageDisplay : loaderMessageDisplay == true , " +
+        "slide : loaderMessageDisplay == -1}' class='loaderMessage'>" +
+        " {{ loaderMessage }}" +
+        " </div>" +
+
         "<div class='dot dot1'></div> " +
         "<div class='dot dot2'></div>" +
         "<div class='dot dot3'></div>" +
@@ -30,6 +38,14 @@ Loader.directive("loader" , function () {
 
 Loader.factory("Loader" , function ( $rootScope , $timeout ) {
     var _timeOut  ;
+    $rootScope.loaderMessage = null ;
+    $rootScope.loaderDisplay = false ;
+    $rootScope.loaderStyle = {
+        bg : null ,
+        dotBg : null ,
+        _class : null
+    } ;
+
     var start = function (timeout , message ) {
 
         $timeout.cancel(_timeOut) ;
@@ -39,10 +55,10 @@ Loader.factory("Loader" , function ( $rootScope , $timeout ) {
         if ( message ) $rootScope.loaderMessageDisplay = true ;
 
         if ( timeout ) {
-            //_timeOut = $timeouttimeout(function () {
-            //    $rootScope.loaderDisplay = false ;
-            //    $rootScope.loaderMessageDisplay = false ;
-            //} ,  timeout ) ;
+            _timeOut = $timeout(function () {
+                $rootScope.loaderDisplay = false ;
+                $rootScope.loaderMessageDisplay = false ;
+            } ,  timeout ) ;
         }
     } ;
 
@@ -51,16 +67,35 @@ Loader.factory("Loader" , function ( $rootScope , $timeout ) {
         $rootScope.loaderMessageDisplay = false ;
     } ;
 
-    var chain = function ( message , time ) {
+    var chain = function ( message ) {
+        $rootScope.loaderMessageDisplay = -1 ;
+        $timeout(function () {
+            $rootScope.loaderMessageDisplay = false ;
 
+            $timeout(function () {
+                $rootScope.loaderMessage = message ;
+                $rootScope.loaderMessageDisplay = true ;
+            } , 300 )
+        } , 500 ) ;
     } ;
 
     var message = function (message) {
+        // if any Loader is currently Displayed
         if ( $rootScope.loaderDisplay ) {
+
+            // if a message already exists on screen
             if ( $rootScope.loaderMessageDisplay ) {
+
+                // hide that message and show the new one
+                $rootScope.loaderMessageDisplay = false ;
+                $timeout(function () {
+                    $rootScope.loaderMessage = message  ;
+                    $rootScope.loaderMessageDisplay = true ;
+                } , 500 )
 
             }
             else {
+                // just show the man thing :)
                 $rootScope.loaderMessage = message ;
                 $rootScope.loaderMessageDisplay = true ;
             }
