@@ -37,7 +37,7 @@ Loader.factory("Loader" , function ( $rootScope , $timeout ) {
         _class : null
     } ;
 
-    var start = function (timeout) {
+    var show = function (timeout) {
 
         $timeout.cancel(_timeOut) ;
 
@@ -50,13 +50,13 @@ Loader.factory("Loader" , function ( $rootScope , $timeout ) {
         }
     } ;
 
-    var dismiss = function () {
+    var hide = function () {
         $rootScope.loaderDisplay = false ;
     } ;
 
     return {
-        start : start ,
-        dismiss : dismiss
+        show : show ,
+        hide : hide
         // message : message ,
     }
 

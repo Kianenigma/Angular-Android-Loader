@@ -18,6 +18,7 @@
   "homepage": "https://github.com/Kianp/AngularAndroidLoader#readme",
   "devDependencies": {
     "angular": "^1.5.8",
-    "bootstrap": "^3.3.7"
+    "bootstrap": "^3.3.7",
+    "gulp-minifier": "^0.1.4"
   }
 }
