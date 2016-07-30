@@ -1,0 +1,19 @@
+{
+  "name": "angular-android-loader",
+  "version": "1.0.0",
+  "description": "A Loader module for angular 1x",
+  "main": "index.js",
+  "scripts": {
+    "test": "live-server test/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kianp/AngularAndroidLoader.git"
+  },
+  "author": "Kian.peymani@g,ail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kianp/AngularAndroidLoader/issues"
+  },
+  "homepage": "https://github.com/Kianp/AngularAndroidLoader#readme"
+}
