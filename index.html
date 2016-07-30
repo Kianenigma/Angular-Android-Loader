@@ -34,49 +34,44 @@
 <h2>
 <a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h2>
 
-<p>Simply use either of </p>
-
-<pre><code>bower install angular-android-load
-</code></pre>
-
-<p>or</p>
+<p>Simply use either of</p>
 
 <pre><code>npm install angular-android-loader
 </code></pre>
 
-<p>or download zip from github </p>
+<p>or download zip from github</p>
 
-<p>and include it in your html file: </p>
+<p>and include it in your html file:</p>
 
 <pre><code>&lt;link rel="stylesheet" href="path/to/lib/Loader.css"&gt;
 &lt;script type="text/javascript" src="path/to/lib/Loader.js"&gt;&lt;/script&gt;
 </code></pre>
 
-<p>And include the <code>Loader</code> dependency to your Angular Module </p>
+<p>And include the <code>Loader</code> dependency to your Angular Module</p>
 
-<pre><code>var m = angular.module([name], [.., "Loader"]); 
+<pre><code>var m = angular.module([name], [.., "Loader"]);
 </code></pre>
 
 <h2>
 <a id="how-to-use" class="anchor" href="#how-to-use" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How to use</h2>
 
-<p>after injection the <code>Loader</code> service into a controller/service place the <code>&lt;loader&gt;&lt;/loader&gt;</code> tag in your html body. this is for a full page loader. if you want it somewhere else, place it inside any container that has a <code>position: relative</code> style. 
-Then: </p>
+<p>after injection the <code>Loader</code> service into a controller/service place the <code>&lt;loader&gt;&lt;/loader&gt;</code> tag in your html body. this is for a full page loader. if you want it somewhere else, place it inside any container that has a <code>position: relative</code> style.
+Then:</p>
 
 <pre><code>Loader.show(time)
 </code></pre>
 
-<p>Where time is the duration of loading displayed. leave empty for infinite loading. </p>
+<p>Where time is the duration of loading displayed. leave empty for infinite loading.</p>
 
 <pre><code>Loader.hide()
 </code></pre>
 
-<p>will hide the Loader immediately. </p>
+<p>will hide the Loader immediately.</p>
 
 <h2>
 <a id="customization" class="anchor" href="#customization" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Customization</h2>
 
-<p>The following classes ( taken from <a href="http://ionicframework.com/">Ionic</a> color pallets) are supported. adding any other is pretty easy by modifying the <a href="https://github.com/Kianenigma/AngularAndroidLoader/blob/master/src/Loader.css#L18">css</a> file. </p>
+<p>The following classes ( taken from <a href="http://ionicframework.com/">Ionic</a> color pallets) are supported. adding any other is pretty easy by modifying the <a href="https://github.com/Kianenigma/AngularAndroidLoader/blob/master/src/Loader.css#L18">css</a> file.</p>
 
 <pre><code>.loaderWrapper.positive { background-color: #387EF5;}
 .loaderWrapper.calm { background-color: #11C1F3 ; }
@@ -87,7 +82,7 @@ Then: </p>
 .loaderWrapper.dark { background-color: #444444;}
 </code></pre>
 
-<p>apply any of them with: </p>
+<p>apply any of them with:</p>
 
 <pre><code>&lt;loader class="balanced"&gt;&lt;/loader&gt;
 </code></pre>
