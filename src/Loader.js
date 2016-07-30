@@ -67,18 +67,6 @@ Loader.factory("Loader" , function ( $rootScope , $timeout ) {
         $rootScope.loaderMessageDisplay = false ;
     } ;
 
-    var chain = function ( message ) {
-        $rootScope.loaderMessageDisplay = -1 ;
-        $timeout(function () {
-            $rootScope.loaderMessageDisplay = false ;
-
-            $timeout(function () {
-                $rootScope.loaderMessage = message ;
-                $rootScope.loaderMessageDisplay = true ;
-            } , 300 )
-        } , 500 ) ;
-    } ;
-
     var message = function (message) {
         // if any Loader is currently Displayed
         if ( $rootScope.loaderDisplay ) {
@@ -95,7 +83,7 @@ Loader.factory("Loader" , function ( $rootScope , $timeout ) {
 
             }
             else {
-                // just show the man thing :)
+                // just show the main thing
                 $rootScope.loaderMessage = message ;
                 $rootScope.loaderMessageDisplay = true ;
             }
@@ -105,19 +93,10 @@ Loader.factory("Loader" , function ( $rootScope , $timeout ) {
         }
     } ;
 
-    var setTheme = function (name) {
-
-    } ;
-
-    var setStyle = function ( obj ) {
-
-    } ;
-
     return {
         start : start ,
-        dismiss : dismiss ,
-        chain : chain ,
-        message : message ,
+        dismiss : dismiss
+        // message : message ,
     }
 
 }) ;
