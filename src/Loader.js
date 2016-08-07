@@ -1,63 +1,42 @@
-var Loader = angular.module("Loader" , []) ;
-Loader.directive("loader" , function () {
-    return {
-        restrict : "E" ,
-        replace : true ,
-        template : "<div " +
-        "ng-class='{loaderDisplay : loaderDisplay}' class='loaderWrapper'>" +
-        "<div class='dot dot1'></div> " +
-        "<div class='dot dot2'></div>" +
-        "<div class='dot dot3'></div>" +
-        "<div class='dot dot4'></div> " +
-        "</div>" ,
+var Loader = angular.module("Loader", []);
+Loader.directive("loader", function () {
+  return {
+    restrict: "E",
+    replace: true,
+    template: "<div " +
+      "ng-class='{loaderDisplay : loaderDisplay}' class='loaderWrapper'>" +
+      "<div class='dot dot1'></div> " +
+      "<div class='dot dot2'></div>" +
+      "<div class='dot dot3'></div>" +
+      "<div class='dot dot4'></div> " +
+      "</div>",
+  }
+});
 
-        link : function (scope , elem , attr) {
-            //var _body = angular.element("body") ;
+Loader.factory("Loader", function ($rootScope, $timeout) {
+  var _timeOut;
+  $rootScope.loaderDisplay = false;
 
-            //var customStyle = {
-            //    backgroundColor : attr.bg
-            //} ;
-            //
-            //elem.css(customStyle) ;
-            //elem.find(".loaderMessage").css({
-            //    backgroundColor: attr.bg
-            //}) ;
+  var show = function (timeout) {
 
-            console.log(elem , scope , attr ) ;
-        }
+    $timeout.cancel(_timeOut);
+
+    $rootScope.loaderDisplay = true;
+
+    if (timeout) {
+      _timeOut = $timeout(function () {
+        $rootScope.loaderDisplay = false;
+      }, timeout);
     }
-}) ;
+  };
 
-Loader.factory("Loader" , function ( $rootScope , $timeout ) {
-    var _timeOut  ;
-    $rootScope.loaderDisplay = false ;
-    $rootScope.loaderStyle = {
-        bg : null ,
-        dotBg : null ,
-        _class : null
-    } ;
+  var hide = function () {
+    $rootScope.loaderDisplay = false;
+  };
 
-    var show = function (timeout) {
+  return {
+    show: show,
+    hide: hide
+  }
 
-        $timeout.cancel(_timeOut) ;
-
-        $rootScope.loaderDisplay = true ;
-
-        if ( timeout ) {
-            _timeOut = $timeout(function () {
-                $rootScope.loaderDisplay = false ;
-            } ,  timeout ) ;
-        }
-    } ;
-
-    var hide = function () {
-        $rootScope.loaderDisplay = false ;
-    } ;
-
-    return {
-        show : show ,
-        hide : hide
-        // message : message ,
-    }
-
-}) ;
+});

@@ -1,0 +1,22 @@
+{
+  "name": "angular-android-loader",
+  "description": "A Loader module for angular 1x",
+  "main": "index.js",
+  "authors": [
+    "Kian.peymani@gmail.com"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "angular",
+    "android",
+    "loader"
+  ],
+  "homepage": "https://github.com/Kianp/AngularAndroidLoader",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

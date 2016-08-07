@@ -1,6 +1,6 @@
 {
   "name": "angular-android-loader",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Loader module for angular 1x",
   "main": "index.js",
   "scripts": {
