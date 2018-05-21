@@ -41,7 +41,7 @@ Loader.hide()
 
 will hide the Loader immediately.
 
-##Customization
+## Customization
 
 The following classes ( taken from [Ionic](http://ionicframework.com/) color pallets) are supported. adding any other is pretty easy by modifying the [css](https://github.com/Kianenigma/AngularAndroidLoader/blob/master/src/Loader.css#L18) file.
 
